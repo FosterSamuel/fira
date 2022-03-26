@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fira - Examples</title>
+    <meta name="description" content="An example description.">
+    <meta name="author" content="Samuel Foster">
+    <link rel="stylesheet" href="../assets/layout.css">
+    <link rel="stylesheet" href="../assets/fira.css">
+</head>
+
+<body>
+    <section class="container">
+        <h2>Fira - Board Example</h2>
+        <p id="pressed">Try tapping a square.</p>
+        <div id="fira"></div>
+        <section>
+            <h3>Theme</h3>
+            <button onclick="setTheme()">Default</button>
+            <button onclick="setTheme('red')">Red</button>
+            <button onclick="setTheme('space')">Space</button>
+        </section>
+    </section>
+    <script src="../dist/fira.js" type="module"></script>
+    <script>
+        const head = document.getElementsByTagName("Head")[0];
+        const pressed = document.getElementById("pressed");
+        const workers = [];
+
+        function setTheme(theme) {
+            const newStyle = document.createElement('link');
+
+            if (theme !== undefined) {
+                newStyle.href = `../assets/fira.${theme}.css`;
+            } else {
+                newStyle.href = '../assets/fira.css';
+            }
+
+            newStyle.rel = 'stylesheet';
+
+            head.appendChild(newStyle);
+        }
+
+        function moveWorker() {
+            board.moveWorkerToSquare(workers[0], pressedCoords[0], pressedCoords[1]);
+        }
+
+
+        const onTap = (s, row, column) => {
+            pressed.innerText = `Tapped square on row ${row} column ${column}.`;
+        };
+    </script>
+    <script type="module">
+        import Fira from "../dist/fira.js";
+
+        const element = document.getElementById("fira");
+        window.board = Fira({ element, onTap, playable: true });
+
+        board.removeHighlightDots();
+
+        const worker = board.addWorkerForPlayer(1, 1, 0);
+        const worker2 = board.addWorkerForPlayer(1, 0, 1);
+
+        const worker3 = board.addWorkerForPlayer(2, 3, 4);
+        const worker4 = board.addWorkerForPlayer(2, 2, 4);
+
+        workers.push(worker, worker2, worker3, worker4);
+
+        board.setBuilding(0, 0, "first");
+        board.setBuilding(0, 2, "dome");
+
+        board.setBuilding(1, 2, "second");
+        board.setBuilding(2, 2, "dome");
+    </script>
+</body>
+
+</html>

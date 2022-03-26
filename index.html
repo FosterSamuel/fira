@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fira - User Interface for Santorini boards</title>
+    <meta name="description" content="An example description.">
+    <meta name="author" content="Samuel Foster">
+    <link rel="stylesheet" href="./assets/layout.css">
+    <link rel="stylesheet" href="./assets/fira.css">
+</head>
+
+<body>
+    <h1>Fira v0.1.0</h1>
+    <p>A library for creating and updating Santorini boards. <a href="TO DO">Source code available
+            here.</a></p>
+    <div id="fira"></div>
+    <section>
+        <h2>Installation</h2>
+        <p>For this early version, installation is manual. Download Fira from <a href="TO DO">the source</a> and import
+            or load it:</p>
+        <code>
+            import Fira from "./dist/fira.js";
+        </code>
+    </section>
+    <section>
+        <h2>Usage</h2>
+        <p>To create a new board, Fira needs an element ID, a function for when a square is tapped, and whether the
+            board should be tappable.</p>
+        <code>
+            const onTap = (sq, r, c) => { console.log(`Tapped square ${sq} on row ${r} column ${c}.`) };        
+            <br>
+            <br>
+            const element = document.getElementById("fira");
+            <br>
+            const board = Fira({ element, onTap, playable: true });
+        </code>
+        <p>Full documentation is coming soon. For now I recommend exploring <a href="TO DO">the functions exposed by
+                Fira</a> or visiting the example page.</p>
+    </section>
+    <section>
+        <h3>Example</h3>
+        <p>See <a href="examples/index.html">here</a> for example</p>
+    </section>
+
+    <script src="../dist/fira.js" type="module"></script>
+    <script type="module">
+        import Fira from "../dist/fira.js";
+
+        const onTap = (s, row, column) => {
+            pressed.innerText = `Tapped square on row ${row} column ${column}.`;
+        };
+
+        const element = document.getElementById("fira");
+        const board = Fira({ element, onTap, playable: true });
+
+        board.removeHighlightDots();
+
+        const worker = board.addWorkerForPlayer(1, 1, 0);
+        const worker2 = board.addWorkerForPlayer(1, 0, 1);
+
+        const worker3 = board.addWorkerForPlayer(2, 2, 1);
+        const worker4 = board.addWorkerForPlayer(2, 1, 2);
+
+        board.setBuilding(1, 0, "first");
+        board.setBuilding(0, 2, "dome");
+
+        board.setBuilding(0, 0, "second");
+        board.setBuilding(1, 2, "second");
+        board.setBuilding(2, 2, "dome");
+    </script>
+</body>
+
+</html>

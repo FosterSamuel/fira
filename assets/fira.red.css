@@ -1,0 +1,16 @@
+:root {
+    --boardBackgroundColor: #7e582c;
+    --boardGutterColor: #c4c4c4;
+  
+    --highlightColor: #a0703a;
+  
+    --firstWorkerOutline: rgb(32, 32, 32);
+    --firstWorkerColor: rgb(116, 144, 112);
+    --secondWorkerOutline: var(--firstWorkerOutline);
+    --secondWorkerColor: rgb(205, 90, 90);
+  
+    --firstBuildingColor: #ffe29e;
+    --secondBuildingColor: #c49731;
+    --thirdBuildingColor: #815c05;
+    --domeColor: #630808;
+  }

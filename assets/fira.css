@@ -1,0 +1,83 @@
+:root {
+  --boardBackgroundColor: #328700;
+  --boardGutterColor: #c4c4c4;
+  --boardGutterWidth: 0.15;
+
+  --highlightColor: #379400;
+
+  --firstWorkerOutline: rgb(32, 32, 32);
+  --firstWorkerColor: rgb(86, 162, 255);
+  --secondWorkerOutline: rgb(32, 32, 32);
+  --secondWorkerColor: #c79776;
+
+  --firstBuildingColor: #e5f5f2;
+  --secondBuildingColor: #bfcecc;
+  --thirdBuildingColor: #92999e;
+  --domeColor: hsl(218, 61%, 50%);
+}
+
+/* Ignore clicks on workers and buildings */
+.buildingGroup > *, .workerGroup > * {
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Board container and gutter */
+.fira-board {
+  background-color: var(--boardBackgroundColor);
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+.boardGutters {
+  stroke: var(--boardGutterColor);
+  stroke-width: var(--boardGutterWidth);
+  -webkit-text-stroke-width: var(--boardGutterWidth);
+}
+
+/* Highlight squares and dots */
+.highlightSquare {
+  fill: transparent;
+}
+
+.highlightSquare:hover, .highlightDot, .activeHighlight {
+  fill:var(--highlightColor);
+  cursor: pointer;
+}
+
+.highlightDot {
+  pointer-events: none;
+}
+
+/* Workers */
+.worker {
+  fill: var(--firstWorkerColor);
+  stroke: var(--firstWorkerOutline);
+  stroke-width: .1;
+  transition: transform .25s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.workerSecond {
+  fill: var(--secondWorkerColor);
+  stroke: var(--secondWorkerOutline)
+}
+
+/* Buildings */
+.firstBuilding {
+  fill: var(--firstBuildingColor);
+}
+
+.secondBuilding {
+  fill: var(--secondBuildingColor);
+}
+
+.thirdBuilding {
+  fill: var(--thirdBuildingColor);
+}
+
+.dome {
+  fill: var(--domeColor);
+}
