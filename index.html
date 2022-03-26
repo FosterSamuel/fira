@@ -50,9 +50,9 @@
         <p>See <a href="examples/index.html">here</a> for example</p>
     </section>
 
-    <script src="./fira/dist/fira.js" type="module"></script>
+    <script src="./dist/fira.js" type="module"></script>
     <script type="module">
-        import Fira from "../dist/fira.js";
+        import Fira from "./dist/fira.js";
 
         const onTap = (s, row, column) => {
             pressed.innerText = `Tapped square on row ${row} column ${column}.`;
